@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     color: 'white'
   },
   appBar:{
-    backgroundColor: '#00b633',
+    backgroundColor: '#006d77',
     shadows: ['none'],
   },
   greeting:{
