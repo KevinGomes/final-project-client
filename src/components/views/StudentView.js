@@ -44,10 +44,9 @@ const useStyles = makeStyles( () => ({
 }));
 
 const StudentView = (props) => {
-  const { student } = props;
+  const { deleteStudent, student } = props;
   const classes = useStyles();
 
-  console.log(student);
   // Render a single Student view 
   return (
     <div>
@@ -70,6 +69,15 @@ const StudentView = (props) => {
         <p>Attends:</p>
         <Link to={`/campus/${student.campus.id}`}>
           <h3>{student.campus.name}</h3>
+        </Link>
+
+        <Link to={`/editstudent/${student.id}`}>
+          <button>Edit Student</button>
+        </Link>
+
+        
+        <Link to={`/students`}>
+          <button onClick={() => deleteStudent(student.id)}>Delete</button>
         </Link>
       </div>
     </div>
