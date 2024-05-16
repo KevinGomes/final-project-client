@@ -54,8 +54,7 @@ const StudentView = (props) => {
 
       <div className={classes.formContainer}>
         
-        
-        <img alt="student profile"src={student.url ? student.url : "https://images.pexels.com/photos/247600/pexels-photo-247600.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"} 
+        <img alt="student profile"src={student.imageurl ? student.imageurl : "https://images.pexels.com/photos/247600/pexels-photo-247600.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"} 
         className={classes.userImage}/>
 
         <p>First Name: {student.firstname}</p>
