@@ -24,7 +24,6 @@ const useStyles = makeStyles( () => ({
     },
     color: '#edf6f9',
   },
-
   formContainer:{  
     width: '500px',
     backgroundColor: '#edf6f9',
@@ -32,15 +31,6 @@ const useStyles = makeStyles( () => ({
     margin: 'auto',
     padding: '10px',
     fontSize: 'large',
-  },
-  title: {
-    flexGrow: 1,
-    textAlign: 'left',
-    textDecoration: 'none'
-  }, 
-  customizeAppBar:{
-    backgroundColor: '#11153e',
-    shadows: ['none'],
   },
   formTitle:{
     //backgroundColor:'#c5c8d6',

@@ -16,15 +16,6 @@ const useStyles = makeStyles( () => ({
     borderRadius: '5px',
     margin: 'auto',
   },
-  title: {
-    flexGrow: 1,
-    textAlign: 'left',
-    textDecoration: 'none'
-  }, 
-  customizeAppBar:{
-    backgroundColor: '#11153e',
-    shadows: ['none'],
-  },
   formTitle:{
     backgroundColor:'#c5c8d6',
     marginBottom: '15px',
