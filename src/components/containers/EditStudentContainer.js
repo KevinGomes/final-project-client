@@ -26,12 +26,6 @@ class EditStudentContainer extends Component {
     super(props);
     this.state = {
     student: this.props.student,
-    //firstname: "", 
-    //lastname: "",
-    //email: "",
-    //imageurl: null,
-    //gpa: 0, 
-    //campusId: null, 
       redirect: false, 
       redirectId: null
     };

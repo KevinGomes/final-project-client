@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
 
+// Create styling for student page
 const useStyles = makeStyles( () => ({
   buttonColor: {
     backgroundColor: '#006d77',
@@ -36,7 +37,6 @@ const useStyles = makeStyles( () => ({
     fontSize: 'large',
   },
   formTitle:{
-    //backgroundColor:'#c5c8d6',
     marginBottom: '15px',
     textAlign: 'center',
     borderRadius: '5px 5px 0px 0px',
