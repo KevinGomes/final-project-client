@@ -136,7 +136,15 @@ export const fetchStudentThunk = id => async dispatch => {  // The THUNK
     let res = await axios.get(`/api/students/${id}`);  
     // Call Action Creator to return Action object (type + payload with student data)
     // Then dispatch the Action object to Reducer to display student data 
-    dispatch(ac.fetchStudent(res.data));
+    let myObj = res.data;
+
+    myObj = JSON.stringify(myObj, function (key, value) {
+      return (value === null && (key=='campusId' || key=='campus')) ? 0 : value;
+    });
+
+    myObj = JSON.parse(myObj);
+
+    dispatch(ac.fetchStudent(myObj));
   } catch(err) {
     console.error(err);
   }
