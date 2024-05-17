@@ -5,18 +5,23 @@ The Views component is responsible for rendering web page with data provided by 
 It constructs a React component to display a single campus and its students (if any).
 ================================================== */
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles( () => ({
   buttonColor: {
     backgroundColor: '#006d77',
+    "&:hover": {
+      backgroundColor: '#00bbcc'
+    },
     color: '#edf6f9',
   },
 
   deleteButton: {
     backgroundColor: '#770a00',
+    "&:hover": {
+      backgroundColor: '#cc1100'
+    },
     color: '#edf6f9',
   },
 
@@ -63,9 +68,9 @@ const useStyles = makeStyles( () => ({
 
 // Take in props data to construct the component
 const CampusView = (props) => {
-  const {campus, deleteCampus} = props;
+  const {campus, deleteCampus, removeStudent} = props;
   const classes = useStyles();
-  
+
   // Render a single Campus view with list of its students
   return (
     <div>
@@ -78,6 +83,15 @@ const CampusView = (props) => {
 
         <p>{campus.address}</p>
         <p>{campus.description}</p>
+        <h3>{campus.students.length ? 
+          <div>
+            Number of students: {campus.students.length}
+          </div>
+          :
+          <div>
+            This campus has no enrolled students.
+          </div>
+        }</h3>
         <table className={classes.tableContainer}>
         <tbody>
         {campus.students.map( student => {
@@ -92,11 +106,17 @@ const CampusView = (props) => {
                 }
               </td>
               
-              { //this button doesntdont anything yet
+              { //this button doesnt dont anything yet
                 //look up how to remove one to many relationships
                 //probably could do it on the backend with an inverse function that was used to attach students to dummy campuses
               }
-              <td><Button className={classes.buttonColor}>Unenroll Student</Button>   </td>
+              <td>
+                <Link to={`/campuses`}>
+
+                  <Button className={classes.buttonColor} onClick={() => removeStudent(student)}>Unenroll Student</Button>
+                
+                </Link>
+              </td>
 
             </tr>
           

@@ -10,6 +10,23 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles( () => ({
+  buttonColor: {
+    backgroundColor: '#006d77',
+    "&:hover": {
+      backgroundColor: '#00bbcc'
+    },
+    color: '#edf6f9',
+    margin: '10px 5px 0 0',
+  },
+
+  deleteButton: {
+    backgroundColor: '#770a00',
+    "&:hover": {
+      backgroundColor: '#cc1100'
+    },
+    color: '#edf6f9',
+    margin: '10px 0 0 5px',
+  },
   formContainer:{  
     width: '500px',
     backgroundColor: '#edf6f9',
@@ -63,7 +80,7 @@ const StudentView = (props) => {
         
         <p>Email: {student.email}</p>
         
-        <p>GPA: {student.gpa}</p>
+        <p>GPA: {parseFloat(student.gpa).toFixed(2)}</p>
         
         <p>Attends:</p>
         <div>
@@ -71,26 +88,24 @@ const StudentView = (props) => {
 
           <Link to={`/campus/${student.campus.id}`}>
             <h3>{student.campus.name}</h3>
-            {console.log(student.campusId)}
           </Link>
 
           :
 
           <div>
-          "Not Enrolled"
-          {console.log(student.campusId)}
+          Not currently enrolled
           </div>
           
           }
         </div>
 
         <Link to={`/editstudent/${student.id}`}>
-          <button>Edit Student</button>
+          <Button className={classes.buttonColor}>Edit Student</Button>
         </Link>
 
         
         <Link to={`/students`}>
-          <button onClick={() => deleteStudent(student.id)}>Delete</button>
+          <Button className={classes.deleteButton} onClick={() => deleteStudent(student.id)}>Delete</Button>
         </Link>
       </div>
     </div>

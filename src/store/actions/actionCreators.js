@@ -73,6 +73,14 @@ export const editStudent = (student) => {
   };
 };
 
+
+export const removeStudent = (student) => {
+  return {
+    type: at.REMOVE_STUDENT,
+    payload: student,
+  };
+};
+
 //Single Student
 export const fetchStudent = (student) => {
   return {
