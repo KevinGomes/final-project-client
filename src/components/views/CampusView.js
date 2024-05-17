@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
 
+// Create styling for the campus page
 const useStyles = makeStyles( () => ({
   buttonColor: {
     backgroundColor: '#006d77',
@@ -33,7 +34,6 @@ const useStyles = makeStyles( () => ({
     fontSize: 'large',
   },
   formTitle:{
-    //backgroundColor:'#c5c8d6',
     marginBottom: '15px',
     textAlign: 'center',
     borderRadius: '5px 5px 0px 0px',
@@ -96,15 +96,9 @@ const CampusView = (props) => {
                 }
               </td>
               
-              { //this button doesnt dont anything yet
-                //look up how to remove one to many relationships
-                //probably could do it on the backend with an inverse function that was used to attach students to dummy campuses
-              }
               <td>
                 <Link to={`/campuses`}>
-
                   <Button className={classes.buttonColor} onClick={() => removeStudent(student)}>Unenroll Student</Button>
-                
                 </Link>
               </td>
 

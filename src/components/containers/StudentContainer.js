@@ -30,8 +30,7 @@ class StudentContainer extends Component {
   }
 }
 
-// The following 2 input arguments are passed to the "connect" function used by "StudentContainer" to connect to Redux Store.  
-// The following 2 input arguments are passed to the "connect" function used by "AllCampusesContainer" component to connect to Redux Store.
+// The following input arguments are passed to the "connect" function used by "StudentContainer" to connect to Redux Store.
 const mapState = (state) => {
   return {
     student: state.student,  // Get the State object from Reducer "student"
