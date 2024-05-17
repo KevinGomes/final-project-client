@@ -73,6 +73,7 @@ const CampusView = (props) => {
         <p>{campus.address}</p>
         <p>{campus.description}</p>
         <table className={classes.tableContainer}>
+        <tbody>
         {campus.students.map( student => {
           let name = student.firstname + " " + student.lastname;
           return (
@@ -92,9 +93,10 @@ const CampusView = (props) => {
               <td><Button className={classes.buttonColor}>Remove Student</Button>   </td>
 
             </tr>
-
+          
           );
         })}
+        </tbody>
         </table>
 
       </div>
