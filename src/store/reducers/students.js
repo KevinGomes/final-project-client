@@ -16,6 +16,8 @@ const allStudents = (state=[], action) => {  // Empty array as default Initial S
       return [...state, action.payload]
     case at.DELETE_STUDENT:
       return state.filter(student => student.id!==action.payload);
+    case at.REMOVE_STUDENT:
+      return state.filter( student => student.id!==action.payload);
     case at.EDIT_STUDENT:
       return state.map(student => { 
         return (

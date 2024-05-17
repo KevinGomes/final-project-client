@@ -5,15 +5,26 @@ The Views component is responsible for rendering web page with data provided by 
 It constructs a React component to display a single campus and its students (if any).
 ================================================== */
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles( () => ({
   buttonColor: {
     backgroundColor: '#006d77',
+    "&:hover": {
+      backgroundColor: '#00bbcc'
+    },
     color: '#edf6f9',
   },
+
+  deleteButton: {
+    backgroundColor: '#770a00',
+    "&:hover": {
+      backgroundColor: '#cc1100'
+    },
+    color: '#edf6f9',
+  },
+
   formContainer:{  
     width: '500px',
     backgroundColor: '#edf6f9',
@@ -38,11 +49,11 @@ const useStyles = makeStyles( () => ({
     borderRadius: '5px 5px 0px 0px',
     padding: '3px'
   },
-  userImage: {
+  campusImage: {
     display: 'inline-block',
-    width: '150px',
-    height: '150px',
-    borderRadius: '50%',
+    width: '250px',
+    height: '250px',
+    borderRadius: '5%',
     objectFit: 'cover',
   },
   tablePos: {
@@ -57,9 +68,9 @@ const useStyles = makeStyles( () => ({
 
 // Take in props data to construct the component
 const CampusView = (props) => {
-  const {campus, deleteCampus} = props;
+  const {campus, deleteCampus, removeStudent} = props;
   const classes = useStyles();
-  
+
   // Render a single Campus view with list of its students
   return (
     <div>
@@ -68,10 +79,19 @@ const CampusView = (props) => {
       <div className={classes.formContainer}>
 
         <img alt="campus profile"src={campus.imageurl ? campus.imageurl : "https://media.istockphoto.com/id/636199580/photo/afternoon-in-the-university.jpg?s=612x612&w=0&k=20&c=LQzMIxJUluhaXN2pi6Tqe6PCSFZgsnQYqNKR2ESMNY0="} 
-        className={classes.userImage}/>
+        className={classes.campusImage}/>
 
         <p>{campus.address}</p>
         <p>{campus.description}</p>
+        <h3>{campus.students.length ? 
+          <div>
+            Number of students: {campus.students.length}
+          </div>
+          :
+          <div>
+            This campus has no enrolled students.
+          </div>
+        }</h3>
         <table className={classes.tableContainer}>
         <tbody>
         {campus.students.map( student => {
@@ -86,11 +106,17 @@ const CampusView = (props) => {
                 }
               </td>
               
-              { //this button doesntdont anything yet
+              { //this button doesnt dont anything yet
                 //look up how to remove one to many relationships
                 //probably could do it on the backend with an inverse function that was used to attach students to dummy campuses
               }
-              <td><Button className={classes.buttonColor}>Remove Student</Button>   </td>
+              <td>
+                <Link to={`/campuses`}>
+
+                  <Button className={classes.buttonColor} onClick={() => removeStudent(student)}>Unenroll Student</Button>
+                
+                </Link>
+              </td>
 
             </tr>
           
@@ -99,17 +125,21 @@ const CampusView = (props) => {
         </tbody>
         </table>
 
+        <Link to={`/enrollstudent/${campus.id}`}>
+          <Button className={classes.buttonColor}>Enroll New Student</Button>
+        </Link>
+
       </div>
 
-        <br/>
+      <br/>
 
       <Link to={`/editcampus/${campus.id}`}>
-          <Button className={classes.buttonColor}>Edit</Button>
+          <Button className={classes.buttonColor}>Edit Information</Button>
       </Link>
       <br/>
       <br/>
       <Link to={`/campuses`}>
-          <Button className={classes.buttonColor} onClick={() => deleteCampus(campus.id)}>Delete</Button>
+          <Button className={classes.deleteButton}  onClick={() => deleteCampus(campus.id)}>Delete Campus</Button>
       </Link>
 
     </div>
