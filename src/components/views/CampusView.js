@@ -14,6 +14,12 @@ const useStyles = makeStyles( () => ({
     backgroundColor: '#006d77',
     color: '#edf6f9',
   },
+
+  deleteButton: {
+    backgroundColor: '#770a00',
+    color: '#edf6f9',
+  },
+
   formContainer:{  
     width: '500px',
     backgroundColor: '#edf6f9',
@@ -38,11 +44,11 @@ const useStyles = makeStyles( () => ({
     borderRadius: '5px 5px 0px 0px',
     padding: '3px'
   },
-  userImage: {
+  campusImage: {
     display: 'inline-block',
-    width: '150px',
-    height: '150px',
-    borderRadius: '50%',
+    width: '250px',
+    height: '250px',
+    borderRadius: '5%',
     objectFit: 'cover',
   },
   tablePos: {
@@ -68,7 +74,7 @@ const CampusView = (props) => {
       <div className={classes.formContainer}>
 
         <img alt="campus profile"src={campus.imageurl ? campus.imageurl : "https://media.istockphoto.com/id/636199580/photo/afternoon-in-the-university.jpg?s=612x612&w=0&k=20&c=LQzMIxJUluhaXN2pi6Tqe6PCSFZgsnQYqNKR2ESMNY0="} 
-        className={classes.userImage}/>
+        className={classes.campusImage}/>
 
         <p>{campus.address}</p>
         <p>{campus.description}</p>
@@ -90,7 +96,7 @@ const CampusView = (props) => {
                 //look up how to remove one to many relationships
                 //probably could do it on the backend with an inverse function that was used to attach students to dummy campuses
               }
-              <td><Button className={classes.buttonColor}>Remove Student</Button>   </td>
+              <td><Button className={classes.buttonColor}>Unenroll Student</Button>   </td>
 
             </tr>
           
@@ -99,17 +105,21 @@ const CampusView = (props) => {
         </tbody>
         </table>
 
+        <Link to={`/enrollstudent/${campus.id}`}>
+          <Button className={classes.buttonColor}>Enroll New Student</Button>
+        </Link>
+
       </div>
 
-        <br/>
+      <br/>
 
       <Link to={`/editcampus/${campus.id}`}>
-          <Button className={classes.buttonColor}>Edit</Button>
+          <Button className={classes.buttonColor}>Edit Information</Button>
       </Link>
       <br/>
       <br/>
       <Link to={`/campuses`}>
-          <Button className={classes.buttonColor} onClick={() => deleteCampus(campus.id)}>Delete</Button>
+          <Button className={classes.deleteButton}  onClick={() => deleteCampus(campus.id)}>Delete Campus</Button>
       </Link>
 
     </div>
