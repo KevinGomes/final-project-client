@@ -54,17 +54,17 @@ const EditStudentView = (props) => {
           </div>
           <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
             <label style= {{color:'#11153e', fontWeight: 'bold'}}>First Name: </label>
-            <input type="text" name="firstname" defaultValue={student.firstname} onChange ={(e) => handleChange(e)} />
+            <input type="text" name="firstname" defaultValue={student.firstname} onChange ={(e) => handleChange(e)} required />
             <br/>
             <br/>
 
             <label style={{color:'#11153e', fontWeight: 'bold'}}>Last Name: </label>
-            <input type="text" name="lastname" defaultValue={student.lastname} onChange={(e) => handleChange(e)} />
+            <input type="text" name="lastname" defaultValue={student.lastname} onChange={(e) => handleChange(e)} required />
             <br/>
             <br/>
             
             <label style={{color:'#11153e', fontWeight: 'bold'}}>Email: </label>
-            <input type="email" name="email" defaultValue={student.email} onChange={(e) => handleChange(e)} />
+            <input type="email" name="email" defaultValue={student.email} onChange={(e) => handleChange(e)} required />
             <br/>
             <br/>
             
@@ -74,7 +74,7 @@ const EditStudentView = (props) => {
             <br/>
             
             <label style={{color:'#11153e', fontWeight: 'bold'}}>GPA: </label>
-            <input type="number" name="gpa" step="0.01" min="0" defaultValue={student.gpa} onChange={(e) => handleChange(e)} />
+            <input type="number" name="gpa" step="0.01" min="0" defaultValue={student.gpa} onChange={(e) => handleChange(e)} required />
             <br/>
             <br/>
 
