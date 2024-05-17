@@ -39,7 +39,6 @@ class EditCampusContainer extends Component {
   
   // Capture input data when it is entered
   handleChange = event => {
-    console.log('typing')
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -58,7 +57,6 @@ class EditCampusContainer extends Component {
         description: this.state.description,
     };
     
-    console.log(campus)
     // edit campus in back-end database
     let editCampus = await this.props.editCampus(campus);
     editCampus = this.props.campus;

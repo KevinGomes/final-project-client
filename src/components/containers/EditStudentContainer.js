@@ -39,7 +39,6 @@ class EditStudentContainer extends Component {
   
   // Capture input data when it is entered
   handleChange = event => {
-    console.log('typing')
     this.setState({
       [event.target.name]: event.target.value
     });
