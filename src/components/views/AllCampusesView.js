@@ -6,8 +6,25 @@ It constructs a React component to display all campuses.
 ================================================== */
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles( () => ({
+  buttonColor: {
+    backgroundColor: '#006d77',
+    color: '#edf6f9',
+  },
+  userImage: {
+    display: 'inline-block',
+    width: '150px',
+    height: '150px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+  }
+}));
 
 const AllCampusesView = (props) => {
+  const classes = useStyles();
   // If there is no campus, display a message.
   if (!props.allCampuses.length) {
     return <div>There are no campuses.</div>;
@@ -20,6 +37,8 @@ const AllCampusesView = (props) => {
 
       {props.allCampuses.map((campus) => (
         <div key={campus.id}>
+          <img alt="campus profile"src={campus.imageurl ? campus.imageurl : "https://media.istockphoto.com/id/636199580/photo/afternoon-in-the-university.jpg?s=612x612&w=0&k=20&c=LQzMIxJUluhaXN2pi6Tqe6PCSFZgsnQYqNKR2ESMNY0="} 
+          className={classes.userImage}/>
           <Link to={`/campus/${campus.id}`}>
             <h2>{campus.name}</h2>
           </Link>

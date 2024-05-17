@@ -66,9 +66,23 @@ const StudentView = (props) => {
         <p>GPA: {student.gpa}</p>
         
         <p>Attends:</p>
-        <Link to={`/campus/${student.campus.id}`}>
-          <h3>{student.campus.name}</h3>
-        </Link>
+        <div>
+          { student.campusId != 0 ?
+
+          <Link to={`/campus/${student.campus.id}`}>
+            <h3>{student.campus.name}</h3>
+            {console.log(student.campusId)}
+          </Link>
+
+          :
+
+          <div>
+          "Not Enrolled"
+          {console.log(student.campusId)}
+          </div>
+          
+          }
+        </div>
 
         <Link to={`/editstudent/${student.id}`}>
           <button>Edit Student</button>
